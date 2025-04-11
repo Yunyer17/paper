@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Camisas Personalizadas - Papelería How</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f5f9ff;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(135deg, #00b4d8, #0077b6);
+      color: white;
+      text-align: center;
+      font-size: 25px;
+      padding: 40px 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      list-style: none;
+      background: #0096c7;
+      padding: 15px 10px;
+      flex-wrap: wrap;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #ffe066;
+    }
+
+    .product-page {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .product-info {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      align-items: center;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .product-info img {
+      width: 300px;
+      border-radius: 10px;
+    }
+
+    .product-details {
+      max-width: 500px;
+      text-align: left;
+    }
+
+    .product-details h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .product-details p {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .product-details ul {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+
+    .product-details .price {
+      font-size: 24px;
+      color: #00b4d8;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 24px;
+      background: #00b4d8;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+      font-size: 18px;
+    }
+
+    .btn:hover {
+      background: #0077b6;
+    }
+
+    /* Solo cambia tamaño para celular */
+    @media (max-width: 768px) {
+      .product-info {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .product-info img {
+        width: 90%;
+        max-width: 300px;
+      }
+
+      .product-details {
+        text-align: center;
+      }
+
+      .product-details h2 {
+        font-size: 22px;
+      }
+
+      .product-details p,
+      .product-details ul {
+        font-size: 16px;
+      }
+
+      .product-details .price {
+        font-size: 20px;
+      }
+
+      .btn {
+        font-size: 16px;
+        padding: 10px 20px;
+      }
+
+      header {
+        font-size: 20px;
+        padding: 20px 10px;
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>CAMISAS PERSONALIZADAS</h1>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="carrito de compras.html">Catálogo</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <div class="product-page">
+    <h2>Camisa Personalizada para Colegio</h2>
+
+    <div class="product-info">
+      <img src="https://png.pngtree.com/png-clipart/20240113/original/pngtree-polo-shirt-series-front-and-back-png-image_14102398.png" alt="Camisa Personalizada">
+      <div class="product-details">
+        <h2>Descripción del producto</h2>
+        <p>¡Haz que tu colegio luzca increíble con nuestras camisas personalizadas! Con una amplia variedad de colores y diseños, podrás elegir la opción perfecta para ti.</p>
+        <p><strong>Características:</strong></p>
+        <ul>
+          <li>Tejido suave y cómodo</li>
+          <li>Disponible en varias tallas</li>
+          <li>Personalización con logotipos y textos</li>
+          <li>Colores resistentes al lavado</li>
+        </ul>
+        <p class="price">$19.99</p>
+        <a href="carrito de compras.html" class="btn">VER EN EL CATÁLOGO</a>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

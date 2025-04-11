@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Catálogo de Compras</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    /* Estilo básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f5f5f5; /* Fondo neutro */
+      color: #333;
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+    }
+
+    header {
+      background: #00b4d8;
+      color: white;
+      text-align: center;
+      font-size: 25px;
+      padding: 60px 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      transform: translateY(-20px);
+      animation: slideDown 1.5s ease-out forwards;
+      animation-delay: 0.2s;
+    }
+
+    @keyframes slideDown {
+      0% { transform: translateY(-100px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    .product-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      padding: 40px 20px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    .product {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      width: 250px;
+      padding: 20px;
+      text-align: center;
+      transform: translateY(20px);
+      opacity: 0;
+      animation: productAnimation 1.5s ease-out forwards;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    @keyframes productAnimation {
+      0% { transform: translateY(20px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    .product:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .product img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      transition: transform 0.3s ease, filter 0.5s ease;
+    }
+
+    .product img:hover {
+      transform: scale(1.1);
+      filter: brightness(1.2);
+    }
+
+    .product h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #333;
+      transition: color 0.3s ease;
+      animation: textEffect 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes textEffect {
+      0% { color: #00b4d8; }
+      50% { color: #ff6a88; }
+      100% { color: #0077b6; }
+    }
+
+    .product p {
+      font-size: 16px;
+      color: #777;
+    }
+
+    .product .price {
+      font-size: 22px;
+      color: #00b4d8;
+      margin: 15px 0;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    .product .price:hover {
+      color: #0077b6;
+    }
+
+    .product button {
+      padding: 10px 20px;
+      background: #00b4d8;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.5s ease;
+    }
+
+    .product button:hover {
+      background: #0077b6;
+      transform: scale(1.1);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .remove-button {
+      background: #ff4e4e;
+      margin-top: 10px;
+      padding: 5px 10px;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s ease;
+    }
+
+    .remove-button:hover {
+      background: #d43f3f;
+      transform: scale(1.05);
+    }
+
+    .cart-link {
+      display: block;
+      text-align: center;
+      margin-top: 40px;
+      padding: 10px 20px;
+      background: #0077b6;
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .cart-link:hover {
+      background: #00b4d8;
+      transform: scale(1.05);
+    }
+
+    .quantity {
+      font-size: 16px;
+      margin-top: 5px;
+      color: #0077b6;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html"><h1>Catálogo</h1></a>
+  </header>
+
+  <div class="product-list" id="product-list">
+    <!-- Productos del catálogo -->
+    <div class="product" id="producto-Mochila">
+      <img src="https://lavictoria.ec/wp-content/uploads/2024/05/MOCHILA-PARA-LAPTOP-DE-15P-TE-ACS9010-TEROS-1.jpg" alt="Producto 1">
+      <h3>MOCHILA</h3>
+      <p>Lleva tu Mochila a todo lado con tu estilo book</p>
+      <p class="price">$29.99</p>
+      <button onclick="addToCart('Mochila', 15.99, 'https://lavictoria.ec/wp-content/uploads/2024/05/MOCHILA-PARA-LAPTOP-DE-15P-TE-ACS9010-TEROS-1.jpg')">Añadir al carrito</button>
+      <div class="quantity" id="cantidad-Mochila">Cantidad: 0</div>
+      <button class="remove-button" onclick="removeFromCart('Mochila')">Eliminar</button>
+    </div>
+    <div class="product" id="producto-Camisas Polo Blanca">
+      <img src="https://png.pngtree.com/png-clipart/20240113/original/pngtree-polo-shirt-series-front-and-back-png-image_14102398.png" alt="Producto 2">
+      <h3>CAMISAS POLO BLANCA</h3>
+      <p>¡Haz que tu colegio luzca increíble con nuestras camisas personalizadas!</p>
+      <p class="price">$19.99</p>
+      <button onclick="addToCart('Camisas Polo Blanca', 22.50, 'https://png.pngtree.com/png-clipart/20240113/original/pngtree-polo-shirt-series-front-and-back-png-image_14102398.png')">Añadir al carrito</button>
+      <div class="quantity" id="cantidad-Camisas Polo Blanca">Cantidad: 0</div>
+      <button class="remove-button" onclick="removeFromCart('Camisas Polo Blanca')">Eliminar</button>
+    </div>
+    <div class="product" id="producto-Agendas">
+      <img src="https://imprentamachala.com/images/uploads/Agendas/agendas-corporativas-machala.png" alt="Producto 3">
+      <h3>AGENDAS</h3>
+      <p>Donde quieras anotar yo siempre estaré aquí para ser tu recordatorio</p>
+      <p class="price">$10.00</p>
+      <button onclick="addToCart('Agendas', 10.00, 'https://imprentamachala.com/images/uploads/Agendas/agendas-corporativas-machala.png')">Añadir al carrito</button>
+      <div class="quantity" id="cantidad-Agendas">Cantidad: 0</div>
+      <button class="remove-button" onclick="removeFromCart('Agendas')">Eliminar</button>
+    </div>
+    <div class="product" id="producto-Colores">
+      <img src="https://juanmarcet.com/wp-content/uploads/2022/07/0507140735-600x600.jpg" alt="Producto 4">
+      <h3>COLORES</h3>
+      <p>""</p>
+      <p class="price">$3.00</p>
+      <button onclick="addToCart('Colores', 10.00, 'https://juanmarcet.com/wp-content/uploads/2022/07/0507140735-600x600.jpg')">Añadir al carrito</button>
+      <div class="quantity" id="cantidad-Colores">Cantidad: 0</div>
+      <button class="remove-button" onclick="removeFromCart('Colores')">Eliminar</button>
+    </div>
+    <div class="product" id="producto-Resaltadores">
+      <img src="https://xaisfe.com/wp-content/uploads/2015/12/resaltadores-pelikan-xaisfe.jpg" alt="Producto 5">
+      <h3>RESALTADORES</h3>
+      <p>""</p>
+      <p class="price">$3.50</p>
+      <button onclick="addToCart('Resaltadores', 10.00, 'https://xaisfe.com/wp-content/uploads/2015/12/resaltadores-pelikan-xaisfe.jpg')">Añadir al carrito</button>
+      <div class="quantity" id="cantidad-Resaltadores">Cantidad: 0</div>
+      <button class="remove-button" onclick="removeFromCart('Resaltadores')">Eliminar</button>
+    </div>
+    <div class="product" id="producto-Archivadores">
+      <img src="https://vernazagrafic.com/wp-content/uploads/2022/05/27LG0030.jpg" alt="Producto 6">
+      <h3>ARCHIVADORES</h3>
+      <p>""</p>
+      <p class="price">$4.50</p>
+      <button onclick="addToCart('Archivadores', 10.00, 'https://vernazagrafic.com/wp-content/uploads/2022/05/27LG0030.jpg')">Añadir al carrito</button>
+      <div class="quantity" id="cantidad-Archivadores">Cantidad: 0</div>
+      <button class="remove-button" onclick="removeFromCart('Archivadores')">Eliminar</button>
+    </div>
+    <div class="product" id="producto-Borradores">
+      <img src="https://dilipa.com.ec/1648-large_default/borrador-std-rapidografo-508.jpg" alt="Producto 7">
+      <h3>BORRADORES</h3>
+      <p>""</p>
+      <p class="price">$0.75</p>
+      <button onclick="addToCart('Borradores', 10.00, 'https://dilipa.com.ec/1648-large_default/borrador-std-rapidografo-508.jpg')">Añadir al carrito</button>
+      <div class="quantity" id="cantidad-Borradores">Cantidad: 0</div>
+      <button class="remove-button" onclick="removeFromCart('Borradores')">Eliminar</button>
+    </div>
+    <div class="product" id="producto-Goma en Barra">
+      <img src="https://www.comercialmilcosas.com/wp-content/uploads/ced-1.jpeg" alt="Producto 8">
+      <h3>GOMA EN BARRA</h3>
+      <p>""</p>
+      <p class="price">$1.25</p>
+      <button onclick="addToCart('Goma en Barra', 10.00, 'https://www.comercialmilcosas.com/wp-content/uploads/ced-1.jpeg')">Añadir al carrito</button>
+      <div class="quantity" id="cantidad-Goma en Barra">Cantidad: 0</div>
+      <button class="remove-button" onclick="removeFromCart('Goma en Barra')">Eliminar</button>
+    </div>
+    <div class="product" id="producto-Juego de Reglas">
+      <img src="https://img.freepik.com/vector-premium/ilustracion-vector-reglas-estudiantes-ninos_28461-23.jpg" alt="Producto 9">
+      <h3>JUEGO DE REGLAS</h3>
+      <p>""</p>
+      <p class="price">$1.50</p>
+      <button onclick="addToCart('Juego de reglas', 10.00, 'https://img.freepik.com/vector-premium/ilustracion-vector-reglas-estudiantes-ninos_28461-23.jpg')">Añadir al carrito</button>
+      <div class="quantity" id="cantidad-Juego de reglas">Cantidad: 0</div>
+      <button class="remove-button" onclick="removeFromCart('Juego de reglas')">Eliminar</button>
+    </div>
+    <div class="product" id="Marcadores">
+      <img src="https://comsucre.com.ec/wp-content/uploads/2022/11/MA-F-1845-1.png" alt="Producto 10">
+      <h3>MARCADORES</h3>
+      <p>""</p>
+      <p class="price">$5.50</p>
+      <button onclick="addToCart('Marcadores', 10.00, 'https://comsucre.com.ec/wp-content/uploads/2022/11/MA-F-1845-1.png')">Añadir al carrito</button>
+      <div class="quantity" id="cantidad-Marcadores">Cantidad: 0</div>
+      <button class="remove-button" onclick="removeFromCart('Marcadores')">Eliminar</button>
+    </div>
+    <div class="product" id="Témperas">
+      <img src="https://xaisfe.com/wp-content/uploads/2016/01/tempera-pelikan-6-colores-xaisfe.jpg" alt="Producto 10">
+      <h3>TEMPERAS</h3>
+      <p>""</p>
+      <p class="price">$3.50</p>
+      <button onclick="addToCart('Témperas', 10.00, 'https://xaisfe.com/wp-content/uploads/2016/01/tempera-pelikan-6-colores-xaisfe.jpg')">Añadir al carrito</button>
+      <div class="quantity" id="cantidad-Témperas">Cantidad: 0</div>
+      <button class="remove-button" onclick="removeFromCart('Témperas')">Eliminar</button>
+    </div>
+  </div>
+
+  <a href="carrito.html" class="cart-link">Ver carrito</a>
+
+  <script>
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+  
+    // Función para añadir productos al carrito
+    function addToCart(producto, precio, imagen) {
+      const existente = carrito.find(item => item.producto === producto);
+  
+      if (existente) {
+        existente.cantidad += 1;
+      } else {
+        carrito.push({ producto, precio, imagen, cantidad: 1 });
+      }
+  
+      localStorage.setItem('carrito', JSON.stringify(carrito));
+      updateQuantity(producto); // Actualizar cantidad
+    }
+  
+    // Función para actualizar la cantidad en el catálogo
+    function updateQuantity(producto) {
+      const cantidadElement = document.getElementById(`cantidad-${producto}`);
+      const item = carrito.find(item => item.producto === producto);
+      cantidadElement.textContent = `Cantidad: ${item ? item.cantidad : 0}`;
+    }
+  
+    // Función para eliminar 1 producto del carrito
+    function removeFromCart(producto) {
+      const index = carrito.findIndex(item => item.producto === producto);
+  
+      if (index !== -1 && carrito[index].cantidad > 0) {
+        carrito[index].cantidad -= 1;
+  
+        if (carrito[index].cantidad === 0) {
+          carrito.splice(index, 1);
+        }
+  
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        updateQuantity(producto); // Actualizar cantidad
+      }
+    }
+  
+    // Mostrar las cantidades de los productos al cargar la página
+    ['Mochila', 'Marcadores', 'Agendas'].forEach(updateQuantity);
+  </script>
+
+</body>
+</html>
